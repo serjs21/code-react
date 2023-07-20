@@ -1,0 +1,11 @@
+.icon {
+    border-radius: 50%;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    &:hover {
+        transition: all 0.2s ease-in;
+        cursor: pointer;
+        background-color: rgb(245, 186, 186);
+        color: white;
+    }
+}

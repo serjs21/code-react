@@ -1,0 +1,24 @@
+.container {
+    .search:hover {
+        border-color: rgb(189, 189, 189);
+    }
+
+    .search {
+        width: 50%;
+        min-width: 40rem;
+        .searchIcon {
+            color: rgb(189, 189, 189);
+            padding-left: 0.3em;
+        }
+
+        @media (max-width:961px) {
+            min-width: 100%;
+            width: 100%;
+        }
+    }
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1em;
+}

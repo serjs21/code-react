@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    border: 2px solid rgb(214, 214, 214);
+    border-radius: 5px;
+    color: #565c70;
+    font-weight: 400;
+    .content {
+        width: 100%;
+    }
+
+    .title {
+        font-weight: 500;
+        margin: 0 1.5rem;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgb(243, 243, 243);
+    }
+
+    .entry {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+    }
+
+    .total {
+        padding: 1rem 0;
+        font-weight: 500;
+        background: rgb(246, 247, 248);
+    }
+}
+
+.checkout {
+    width: 100%;
+    color: white;
+    background: #00b588;
+    border: none;
+    height: 3rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal {
+    :global(.ant-modal-content) {
+        height: 19rem;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    :global(.ant-modal-header) {
+        display: flex;
+        justify-content: center;
+        padding: 3.5rem 0 0;
+    }
+    :global(.ant-modal-title) {
+        font-size: 1.4rem;
+        color: #565c70;
+    }
+
+    :global(.ant-modal-body) {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        color: #565c70;
+    }
+
+    .closeButton {
+        width: 100%;
+        border: none;
+        height: 6rem;
+        font-weight: 500;
+        font-size: 1.4rem;
+        color: #00b588;
+        background: none;
+        border-top: 1px solid rgb(243, 243, 243);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

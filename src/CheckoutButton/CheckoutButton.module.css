@@ -1,0 +1,30 @@
+.container {
+    position: relative;
+
+    .icon {
+        font-size: 1rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+        color: rgb(97, 97, 97);
+        &:hover {
+            transition: background 0.2s ease-in;
+            background-color: rgb(236, 236, 236);
+        }
+    }
+
+    .count {
+        position: absolute;
+        top: -0.3rem;
+        right: 0.1rem;
+        color: white;
+        font-size: 0.7rem;
+        width: fit-content;
+        min-width: 2ch;
+        padding: 0.1rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #00b588;
+    }
+}

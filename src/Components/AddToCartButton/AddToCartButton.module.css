@@ -1,0 +1,49 @@
+.actionButton {
+    color: gray;
+    padding: 0.6rem;
+    border-radius: 50%;
+    border: none;
+    &:hover {
+        transition: background ease-in-out 0.2s;
+        cursor: pointer;
+        background: rgb(236, 236, 236);
+        &.disabled {
+            background: rgb(252, 252, 252);
+            cursor: not-allowed;
+        }
+    }
+}
+
+.counterContainer {
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    height: 2rem;
+    .actionButton {
+        height: 100%;
+        padding: 0;
+        background: rgb(236, 236, 236);
+        width: 2rem;
+    }
+    .actionButton:nth-of-type(even) {
+        border-radius: 0 40% 40% 0;
+        &:hover {
+            background: rgb(206, 206, 206);
+        }
+    }
+    .actionButton:nth-of-type(odd) {
+        border-radius: 40% 0 0 40%;
+        &:hover {
+            background: rgb(206, 206, 206);
+        }
+    }
+
+    .count {
+        background: rgb(236, 236, 236);
+        height: 100%;
+        width: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

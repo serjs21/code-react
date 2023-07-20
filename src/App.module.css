@@ -1,0 +1,34 @@
+body, html {
+    height: 100%;
+    background: rgb(238, 237, 237);
+}
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    padding: 0 2rem;
+    @media (max-width:961px) {
+        padding: auto;
+    }
+}
+
+.title {
+    color: #565c70;
+    font-weight: 400;
+    font-size: 1.5rem;
+    width: 100%;
+    border-bottom: 1px solid #c9c9c9;
+    float: left;
+    padding: 2rem 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.loader {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
