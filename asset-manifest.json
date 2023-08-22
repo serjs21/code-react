@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "//serjs21.github.io/code-react/static/css/main.baef9568.css",
-    "main.js": "//serjs21.github.io/code-react/static/js/main.4dbdc311.js",
+    "main.js": "//serjs21.github.io/code-react/static/js/main.383bf745.js",
     "static/js/787.82697064.chunk.js": "//serjs21.github.io/code-react/static/js/787.82697064.chunk.js",
     "index.html": "//serjs21.github.io/code-react/index.html",
     "main.baef9568.css.map": "//serjs21.github.io/code-react/static/css/main.baef9568.css.map",
-    "main.4dbdc311.js.map": "//serjs21.github.io/code-react/static/js/main.4dbdc311.js.map",
+    "main.383bf745.js.map": "//serjs21.github.io/code-react/static/js/main.383bf745.js.map",
     "787.82697064.chunk.js.map": "//serjs21.github.io/code-react/static/js/787.82697064.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.baef9568.css",
-    "static/js/main.4dbdc311.js"
+    "static/js/main.383bf745.js"
   ]
 }
