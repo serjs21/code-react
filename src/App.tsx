@@ -58,10 +58,10 @@ useEffect(() => {
       amount: amountToSend
     });
 
-    // if (!!errors.length) {
-    //   setValidationErrors(errors);
-    //   return;
-    // }
+    if (!!errors.length) {
+      setValidationErrors(errors);
+      return;
+    }
 
     try {
       await utils.transfer(selectedAccount, targetAddress, amountToSend);
