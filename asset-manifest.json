@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.baef9568.css",
-    "main.js": "/static/js/main.1d828120.js",
-    "static/js/787.82697064.chunk.js": "/static/js/787.82697064.chunk.js",
-    "index.html": "/index.html",
-    "main.baef9568.css.map": "/static/css/main.baef9568.css.map",
-    "main.1d828120.js.map": "/static/js/main.1d828120.js.map",
-    "787.82697064.chunk.js.map": "/static/js/787.82697064.chunk.js.map"
+    "main.css": "//serjs21.github.io/code-react/static/css/main.baef9568.css",
+    "main.js": "//serjs21.github.io/code-react/static/js/main.37b51e71.js",
+    "static/js/787.82697064.chunk.js": "//serjs21.github.io/code-react/static/js/787.82697064.chunk.js",
+    "index.html": "//serjs21.github.io/code-react/index.html",
+    "main.baef9568.css.map": "//serjs21.github.io/code-react/static/css/main.baef9568.css.map",
+    "main.37b51e71.js.map": "//serjs21.github.io/code-react/static/js/main.37b51e71.js.map",
+    "787.82697064.chunk.js.map": "//serjs21.github.io/code-react/static/js/787.82697064.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.baef9568.css",
-    "static/js/main.1d828120.js"
+    "static/js/main.37b51e71.js"
   ]
 }
