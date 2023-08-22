@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import * as utils from './utils';
-import Web3 from 'web3';
+
+
+Object.assign(window, {utils})
 
 function App() {
   const [address, setAddress] = useState('');
@@ -52,9 +54,12 @@ useEffect(() => {
   const onSubmit = async () => {
     setValidationErrors([]);
 
+    const sourceAccount = selectedAccount.trim();
+    const targetAccount = targetAddress.trim();
+
     const errors = await utils.validateRequestParams({
-      sourceAddress: selectedAccount,
-      targetAddress: targetAddress,
+      sourceAddress: sourceAccount,
+      targetAddress: targetAccount,
       amount: amountToSend
     });
 
@@ -64,9 +69,10 @@ useEffect(() => {
     }
 
     try {
-      await utils.transfer(selectedAccount, targetAddress, amountToSend);
+      await utils.transfer(sourceAccount, targetAccount, amountToSend);
       await setSelectedAccountBalance();
     } catch (error: any) {
+      console.error(error);
        setValidationErrors([error.message])
     }
   }
