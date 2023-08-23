@@ -13,8 +13,7 @@ interface MethodActions {
 
 export interface Methods {
 	balanceOf: (address: string) => {call: () => Promise<number>};
-	transfer: any;
-	increaseAllowance: any;
+	transfer: (address: string, value: BigInt) => {send: (transaction: {}) => Promise<any>, encodeABI: () =>  string};
 }
 
 export const connectMetaMaskAccount = async () => {
@@ -31,8 +30,11 @@ export const connectMetaMaskAccount = async () => {
         }
 }
 
+const getWeb3Client = (shouldUseMetamaskProvider: boolean = false) => new Web3(shouldUseMetamaskProvider ? window['ethereum']: providerUrl);
+
+
 export const getContract = (shouldUseMetamaskProvider: boolean = false): { methods: Methods } => {
-	const web3 = new Web3(shouldUseMetamaskProvider ? window['ethereum']: providerUrl);
+	const web3 = getWeb3Client(shouldUseMetamaskProvider);
 	const contract = new web3.eth.Contract(abi, contractAddress);
 	Object.assign(window,{web3, contract})
 	return contract as unknown as { methods: Methods };
@@ -40,21 +42,27 @@ export const getContract = (shouldUseMetamaskProvider: boolean = false): { metho
 
 export const getAccountBalance = (contactAddress: string) => getContract().methods.balanceOf(contactAddress).call();
 
-export const transfer = async (sourceAddress: string, targetAddress: string, amount: number, privateKey: string): Promise<any> => {
-	const web3 = new Web3(window['ethereum']);
-	const val = Web3.utils.toBigInt(amount);
+export const transfer = async (sourceAddress: string, targetAddress: string, amount: number, privateKey?: string): Promise<any> => {
+	const web3 = getWeb3Client(!privateKey);
+	const valueToSend = Web3.utils.toBigInt(amount);
 	const gasPrice = await web3.eth.getGasPrice();
+	
 	const transaction = {
 		to: contractAddress,
 		from: sourceAddress,
 		value: '0x00',
-		data: getContract(true).methods.transfer(targetAddress, val).encodeABI(),
+		data: getContract(true).methods.transfer(targetAddress, valueToSend).encodeABI(),
 		gasPrice,
 	}
 
-	const signedTrx = await web3.eth.accounts.signTransaction(transaction, privateKey);
 
-	return await web3.eth.sendSignedTransaction(signedTrx.rawTransaction)
+	if (privateKey) {
+		// no metamask, manual connection fields case
+		const signedTrx = await web3.eth.accounts.signTransaction(transaction, privateKey);
+		return await web3.eth.sendSignedTransaction(signedTrx.rawTransaction)
+	}
+
+	await getContract(true).methods.transfer(targetAddress, valueToSend).send(transaction);
 }
 
 export interface RequestParams {
@@ -85,3 +93,6 @@ export const validateRequestParams = async (params: RequestParams) : Promise<str
 
 	return validationErrors;
 }
+
+export const weiToHord = (val: number) => val / 1000000;
+export const hordToWei = (val: number) => val * 1000000;

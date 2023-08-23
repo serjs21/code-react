@@ -21,10 +21,6 @@ input {
   justify-content: space-between;
   font-weight: 700;
   color: rgb(61, 61, 61);
-
-  &.account {
-    width: 20rem;
-  }
 }
 
 .error {
@@ -54,4 +50,10 @@ button {
 
 .value {
   font-weight: 400;
+}
+
+.sendingIndicator {
+  padding-top: 30px;
+  font-style: italic;
+  color: rgb(119, 119, 119);
 }
