@@ -13,7 +13,8 @@ interface MethodActions {
 
 export interface Methods {
 	balanceOf: (address: string) => {call: () => Promise<number>};
-	transferFrom: any;
+	transfer: any;
+	increaseAllowance: any;
 }
 
 export const connectMetaMaskAccount = async () => {
@@ -39,8 +40,21 @@ export const getContract = (shouldUseMetamaskProvider: boolean = false): { metho
 
 export const getAccountBalance = (contactAddress: string) => getContract().methods.balanceOf(contactAddress).call();
 
-export const transfer = async (sourceAddress: string, targetAddress: string, amount: number): Promise<boolean> => {
-	return getContract(true).methods.transferFrom(sourceAddress, targetAddress, Web3.utils.utf8ToHex(amount.toString())).send({from: sourceAddress});
+export const transfer = async (sourceAddress: string, targetAddress: string, amount: number, privateKey: string): Promise<any> => {
+	const web3 = new Web3(window['ethereum']);
+	const val = Web3.utils.toBigInt(amount);
+	const gasPrice = await web3.eth.getGasPrice();
+	const transaction = {
+		to: contractAddress,
+		from: sourceAddress,
+		value: '0x00',
+		data: getContract(true).methods.transfer(targetAddress, val).encodeABI(),
+		gasPrice,
+	}
+
+	const signedTrx = await web3.eth.accounts.signTransaction(transaction, privateKey);
+
+	return await web3.eth.sendSignedTransaction(signedTrx.rawTransaction)
 }
 
 export interface RequestParams {

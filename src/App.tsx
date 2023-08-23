@@ -9,6 +9,7 @@ function App() {
   const [address, setAddress] = useState('');
   const [selectedAccount, setSelectedAccount] = useState('');
   const [targetAddress, setTargetAddress] = useState('');
+  const [privateKey, setPrivateKey] = useState('');
   const [amountToSend, setAmountToSend] = useState(0);
   const [balance, setBalance] = useState('');
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
@@ -69,7 +70,7 @@ useEffect(() => {
     }
 
     try {
-      await utils.transfer(sourceAccount, targetAccount, amountToSend);
+      await utils.transfer(sourceAccount, targetAccount, amountToSend, privateKey);
       await setSelectedAccountBalance();
     } catch (error: any) {
       console.error(error);
@@ -84,8 +85,10 @@ useEffect(() => {
         { !!shouldDisplaySourceContactInput ? <span className='field account'> Source account <input onChange={(e) => setAddress(e.target.value)} value={address}/></span> : null }
         { !!selectedAccount && <span className='field account'> Connected Account:  <span className='value'>{`${selectedAccount.substring(0,6)}...${selectedAccount.substring(selectedAccount.length - 4)}`}</span> </span>}
         
+        
         {!!selectedAccount && <span className='field account'> Current balance: <span className='value'>{balance}</span> </span>}
       </div>
+      <span className='field'> Private key <input onChange={(e) => setPrivateKey(e.target.value)} value={targetAddress}/></span>
       <span className='field'> Target address <input onChange={(e) => setTargetAddress(e.target.value)} value={targetAddress}/></span>
       <span className='field'>Amount <input type='number' min={0} onChange={(e) => setAmountToSend(Number(e.target.value))} value={amountToSend} /></span>
 
